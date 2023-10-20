@@ -6,11 +6,11 @@ dotenv.config()
 
 
 const app = express()
+app.use(express.json())
 
-
-const db = module.exports =()=>{
+const db = module.exports =async ()=>{
     try{
-        mongoose.connect(process.env.DBURI, { user: process.env.DBUSERNAME, pass: process.env.DBPASSWORD, useNewUrlParser: true,    useUnifiedTopology: true })
+        await mongoose.connect(process.env.DBURI, { user: process.env.DBUSERNAME, pass: process.env.DBPASSWORD, useNewUrlParser: true,    useUnifiedTopology: true })
             console.log("MongoDB Connection is Successful")
         } catch(error){
             console.log(error);
